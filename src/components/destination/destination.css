@@ -1,0 +1,49 @@
+.destination {
+    border-radius: 8px;
+    margin: 40px 10px;
+    background: white;
+    border: 1px solid darkgrey;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+
+.destination-title {
+  font-size: 26px;
+  font-weight: 700;
+  opacity: 1;
+}
+
+
+.destination-thumbnail-img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  width: 100%;
+}
+
+.destination:hover {
+  cursor: pointer;
+}
+
+.edit-destination {
+  opacity: 0;
+  transition: opacity linear 200ms;
+}
+
+.destination:hover > .edit-destination {
+  opacity: 1;
+  background-color: red;
+}
+
+/*
+.destination:hover .destination-title {
+  opacity: 0;
+  background-color: red;
+}
+*/
+
+@media only screen and (min-width: 780px){
+  .destination {
+    flex: 1 0 30%;
+    max-width: 30%;
+  }
+}

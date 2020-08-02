@@ -6,7 +6,7 @@ class Navbar extends Component {
     render(){
         return( 
             <nav>
-                <div className="nav-title">Nav</div>
+                <div className="nav-title nav-item"><Link to="/">Home</Link></div>
                 <Switch>
                     <Route exact path="/" render={props => { 
                     return  <div className="nav-menu">
@@ -26,7 +26,13 @@ class Navbar extends Component {
                                 <Link className="nav-item" to="/login">Log in</Link>
                                 <Link className="nav-item" to="/signup">Sign up</Link>
                             </div>
-                    }}/>        
+                    }}/>    
+                    
+                    <Route exact path="/dashboard" render={props => { 
+                    return  <div className="nav-menu">
+                                <Link className="nav-item" to="/">Log out</Link>
+                            </div>
+                    }}/>            
                 </Switch>
             </nav>
 

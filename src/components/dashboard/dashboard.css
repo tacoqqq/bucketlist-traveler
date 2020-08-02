@@ -1,0 +1,39 @@
+.dashboard-container {
+    /*min-height: 85vh*/
+    width: 85%;
+    margin: 0 auto;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+.map-container {
+    margin-top: 100px;
+    width: 100%;
+    height: 80vh;
+    /*padding: 20px;*/
+  }
+
+  .add-button-container{
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+
+  button {
+    padding: 10px 20px;
+    border-radius: 35px;
+    border: 1px solid black;
+    background-color: white;
+    font-family: 'Poppins', 'sans-serif';
+  }
+  
+  button:hover {
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+  }
+
+@media only screen and (min-width: 768px){
+  .add-button-container{
+    margin-top: -20px;
+    text-align: right;
+  }
+}

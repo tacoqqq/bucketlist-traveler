@@ -1,0 +1,55 @@
+.lp-container{
+    font-family: 'Poppins','sans-serif';
+}
+
+.lp-header{
+    height: 85vh;
+    background-image: url('../../img/hero2.jpeg');
+    background-position: center;
+}
+
+.lp-title{
+    position: absolute;
+    color: white;
+    font-weight: 800;
+    right: 40px;
+    top: 30%;
+    font-family: 'Poppins','sans-serif';
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+.lp-section-wrapper{
+    width: 85%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.lp-section{
+    padding-right: 20px;
+}
+
+.action-button{
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+}
+
+button{
+    margin: 5px;
+}
+
+.hero-button:hover{
+    background-color: rosybrown;
+}
+
+@media only screen and (min-width: 780px){
+    .lp-section-wrapper{
+        display: flex;
+    }
+}
