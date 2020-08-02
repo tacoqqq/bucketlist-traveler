@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 import './embedded-map.css';
 import { AppContext } from '../../app-context';
+import config from '../../config';
 
 class EmbeddedMap extends Component {
     constructor(props){
@@ -72,5 +73,6 @@ class EmbeddedMap extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyCHlY31_DeFAXqJZLM-hQhx2z-N_qIxjXg'
+    apiKey: config.GooglePlacesAPIKey
 })(EmbeddedMap)
+

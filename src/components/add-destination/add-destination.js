@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './add-destination.css';
 import { AppContext } from '../../app-context';
 import actions from '../../actions/actions';
+import config from '../../config';
 
 class AddDestination extends Component {
     constructor(props){
@@ -79,8 +80,8 @@ class AddDestination extends Component {
 
 
     getCoordinates = (location) => {
-        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyCFCdVnb7Mb4bT4My2-iU97B1FdVjL6hhw`
-
+        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${config.GooglePlacesAPIKey}`
+        
         return fetch(url)
             .then(res => {
                 if(!res.ok){
