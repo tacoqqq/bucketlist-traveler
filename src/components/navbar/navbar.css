@@ -11,8 +11,9 @@ nav {
     z-index: 1;
 }
 
-.nav-title {
+.nav-title a {
     margin-left: 10px;
+    text-decoration: none;
 }
 
 .nav-menu {
@@ -25,11 +26,10 @@ nav {
     margin: 0 20px;
 }
 
-.nav-item:hover {
+.nav-item:hover, .nav-title a:hover {
     text-decoration: underline;
-    color: white;
 }
 
-.nav-item:visited {
+.nav-item:visited, .nav-title a:visited {
     color: inherit;
 }
