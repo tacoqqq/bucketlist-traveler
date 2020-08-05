@@ -1,3 +1,8 @@
 .embedded-map{
     width: 100%;
+    position: relative;
+}
+
+.map-container div{
+    position: relative;
 }

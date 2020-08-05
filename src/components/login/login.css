@@ -46,7 +46,7 @@
   color: white;
 }
 
-input, textarea, select {
+.login-form-wrapper input {
   display: block;
   width: 100%;
   max-width: 500px;
@@ -62,4 +62,6 @@ input, textarea, select {
   border-top: 0px;
 }
 
-
+.error-conatiner {
+  color: red;
+}

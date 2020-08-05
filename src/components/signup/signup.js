@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import './signup.css'
+import actions from '../../actions/actions';
 
 class Signup extends Component {
     constructor(props){
@@ -9,8 +10,16 @@ class Signup extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log('hello!')
         this.props.history.push('/dashboard')
+    }
+
+    //Users can press the esc key to leave this page and go back to homepage
+    componentDidMount(){
+        document.addEventListener("keydown", (e) => actions.escFunction(e, this.props.history), false);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("keydown", (e) => actions.escFunction(e, this.props.history), false);
     }
 
     render(){

@@ -33,7 +33,6 @@ class EmbeddedMap extends Component {
     };
 
     render(){
-
         const markers = this.context.destinations.map((destination,i) => 
             <Marker 
                 key={i} 
@@ -43,14 +42,42 @@ class EmbeddedMap extends Component {
                 />
             )
 
-        const style = {
-            width: '85%',
+        const style = {     
             height: '500px',
-            position: 'relative',
+            width: '100%',
             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
         }
 
         return (
+                <Map 
+                    google={this.props.google} 
+                    zoom={2}
+                    style={style}
+                    initialCenter={this.context.destinations.length ? 
+                    this.context.destinations[0].coordinate 
+                    : {lat: 40.52, lng: 34.34} }
+                >
+                    {markers}
+                    <InfoWindow
+                        marker={this.state.activeMarker}
+                        visible={this.state.showingInfoWindow}>
+                        <div>
+                            <h4>{this.state.selectedPlace.name}</h4>
+                        </div>
+                    </InfoWindow>
+                </Map>
+        )
+    }
+}
+
+
+
+export default GoogleApiWrapper({
+    apiKey: config.GooglePlacesAPIKey
+})(EmbeddedMap)
+
+
+/*
             <div className="embedded-map">
                 <Map 
                     google={this.props.google} 
@@ -67,12 +94,4 @@ class EmbeddedMap extends Component {
                     </InfoWindow>
                 </Map>
             </div>
-        )
-    }
-}
-
-
-export default GoogleApiWrapper({
-    apiKey: config.GooglePlacesAPIKey
-})(EmbeddedMap)
-
+            */

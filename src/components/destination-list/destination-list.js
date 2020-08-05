@@ -10,6 +10,7 @@ class DestinationList extends Component {
     render(){
         const destinations = this.context.destinations.map((destination,i) => <Destination 
             image={destination.img}
+            id={destination.destinationId}
             destination={destination.destination} 
             key={i}
             />)

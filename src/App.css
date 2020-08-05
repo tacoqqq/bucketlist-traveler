@@ -37,11 +37,8 @@
   }
 }
 
-
-/* 
 main {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 80px;
+  overflow: hidden;
+  margin: 0;
 }
-*/
+

@@ -1,0 +1,77 @@
+
+.todo-entry {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  padding: 0.5em;
+  border-bottom: 1px solid darkgrey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-entry:hover {
+  cursor: pointer;
+}
+
+.todo-item {
+  border: 0px;
+  width: 100%;
+  max-width: 800px;
+  font-size: 18px;
+  font-family: 'Poppins', 'sans-serif';
+}
+
+.todo-item:focus{
+  outline: none;
+}
+
+/* close (delete todo)*/
+.close, .check {
+  position: relative;
+  right: 0.5em;
+  bottom: 1em;
+  opacity: 0;
+  padding: 0px;
+  margin: 0 0 0 40px;
+  border: 0px;
+}
+
+.todo-entry:hover > .close, .todo-entry:hover > .check{
+  opacity: 0.8;
+}
+
+.close:before, .close:after {
+  position: absolute;
+  right: 0px;
+  content: '';
+  height: 25px;
+  width: 2px;
+  background-color: #333;
+}
+
+.check:after  {
+  position: absolute;
+  right: 0px;
+  content: '';
+  height: 25px;
+  width: 2px;
+  background-color: green;
+}
+
+.check:before {
+  position: absolute;
+  right: 12px;
+  bottom: -10px;
+  content: '';
+  height: 13px;
+  width: 2px;
+  background-color: green;
+}
+
+.close:before, .check:after {
+  transform: rotate(40deg);
+}
+
+.close:after, .check:before {
+  transform: rotate(-45deg);
+}

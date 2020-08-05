@@ -92,6 +92,7 @@ class AddDestination extends Component {
             .then(resJson => {
                 let locationCoordinates = resJson.results[0].geometry.location
                 let locationToAdd = {
+                    destinationId: this.context.destinations.length + 1,
                     destination: this.state.location,
                     img: 'https://images.unsplash.com/photo-1496950866446-3253e1470e8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
                     coordinate: locationCoordinates,
@@ -129,7 +130,7 @@ class AddDestination extends Component {
                     <span className="sign-up-message">Add a place to your bucket list.</span>
                     <div className="add-form-wrapper">
                         <div className="add-form-input">
-                            <input id="location" type="text" required placeholder="Add a location here" onChange={e => this.handleChange(e)}></input>
+                            <input className="location" type="text" required placeholder="Add a location here" onChange={e => this.handleChange(e)}></input>
                         </div>
                     </div>
                     <div className="add-form-button">

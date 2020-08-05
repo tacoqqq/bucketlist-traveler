@@ -30,9 +30,28 @@ class Navbar extends Component {
                     
                     <Route exact path="/dashboard" render={props => { 
                     return  <div className="nav-menu">
+                                <Link className="nav-item" to="/dashboard">Dashboard</Link>
                                 <Link className="nav-item" to="/">Log out</Link>
                             </div>
                     }}/>            
+                    <Route exact path="/add-destination" render={props => { 
+                    return  <div className="nav-menu">
+                                <Link className="nav-item" to="/dashboard">Dashboard</Link>
+                                <Link className="nav-item" to="/">Log out</Link>
+                            </div>
+                    }}/>   
+                    <Route exact path="/:destinationId" render={props => { 
+                    return  <div className="nav-menu">
+                                <Link className="nav-item" to="/dashboard">Dashboard</Link>
+                                <Link className="nav-item" to="/">Log out</Link>
+                            </div>
+                    }}/>   
+                    <Route exact path="/destination/:destinationId" render={props => { 
+                    return  <div className="nav-menu">
+                                <Link className="nav-item" to="/dashboard">Dashboard</Link>
+                                <Link className="nav-item" to="/">Log out</Link>
+                            </div>
+                    }}/>   
                 </Switch>
             </nav>
 

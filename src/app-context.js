@@ -2,5 +2,11 @@ import React from 'react';
 
 export const AppContext = React.createContext({
     destinations: [],
-    addDestination: () => {}
-})
+    todos: [],
+    users: [],
+    addDestination: () => {},
+    addTodo: () => {},
+    updateTodo: () => {},
+    deleteTodo: () => {},
+    updateCurrentUser: () => {}
+ })

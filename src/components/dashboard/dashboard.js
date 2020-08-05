@@ -18,12 +18,14 @@ class Dashboard extends Component{
         return(
             <section className="dashboard-container">
                 <header className="map-container">
-                    <EmbeddedMap />
+                    <EmbeddedMap/>
                 </header>
-                <h2>My Bucket List</h2>
-                <DestinationList />
-                <div className="add-button-container">
-                    <button onClick={e => this.handleClick(e)}>Add destination</button>
+                <div className="dashboard-bottom">
+                    <h2>My Bucket List</h2>
+                    <DestinationList />
+                    <div className="add-button-container">
+                        <button onClick={e => this.handleClick(e)}>Add destination</button>
+                    </div>
                 </div>
             </section>
         )
