@@ -62,6 +62,10 @@ input.add-tobo-bar  {
 
 .todo-list {
   width: 90%;
-  margin: 3em auto 80px auto;
+  margin: 3em auto 0 auto;
   text-align: left;
+}
+
+.action-button{
+  margin-top: 80px;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './add-destination.css';
+import { Link } from 'react-router-dom';
 import { AppContext } from '../../app-context';
 import actions from '../../actions/actions';
 import config from '../../config';
@@ -135,6 +136,9 @@ class AddDestination extends Component {
                     <div className="add-form-button">
                         <button type="submit">Continue</button>
                         <button type="reset">Reset</button>
+                    </div>
+                    <div className="action-button">
+                        <Link to="/dashboard"><button>Back to Dashboard</button></Link>
                     </div>
                 </form>
             </section>
