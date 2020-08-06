@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './add-destination.css';
 import { AppContext } from '../../app-context';
 import actions from '../../actions/actions';

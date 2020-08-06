@@ -31,14 +31,14 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        if (!this.context.users.find(user => user.email == this.state.email)){
+        if (!this.context.users.find(user => user.email === this.state.email)){
             this.setState({
                 errorMessage: 'Email or password is incorrect! Please try again.'
             })
             return
         } 
 
-        let registeredUser = this.context.users.find(user => user.email == this.state.email)
+        let registeredUser = this.context.users.find(user => user.email === this.state.email)
         if (registeredUser.password !== this.state.password){
             this.setState({
                 errorMessage: 'Email or password is incorrect! Please try again.'

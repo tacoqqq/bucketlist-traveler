@@ -25,8 +25,8 @@ export const destinationData = [
 export const userData = [
     {
         userId: 1,
-        email: 'daphneys.fang@gmail.com',
-        password: 'firstpassword'
+        email: 'hello@gmail.com',
+        password: 'hellohello'
     },
     {
         userId: 2,
@@ -64,54 +64,63 @@ export const todoData = [
         todoId: 1,
         userId: 1,
         userDestinationRelationId: 1,
-        content: 'Eat XiaoLongBao'
+        content: 'Eat XiaoLongBao',
+        checkedActive: false
     },
     {
         todoId: 2,
         userId: 1,
         userDestinationRelationId: 1,
-        content: 'Drink Original Boba'
+        content: 'Drink Original Boba',
+        checkedActive: false
     },    
     {
         todoId: 3,
         userId: 1,
         userDestinationRelationId: 1,
-        content: 'Shop for Food and Crafts at Night Markets'
+        content: 'Shop for Food and Crafts at Night Markets',
+        checkedActive: false
     },    
     {
         todoId: 4,
         userId: 1,
         userDestinationRelationId: 2,
-        content: 'Freediving'
+        content: 'Freediving',
+        checkedActive: false
     },
     {
         todoId: 5,
         userId: 1,
         userDestinationRelationId: 2,
-        content: 'Dolphin Spotting'
+        content: 'Dolphin Spotting',
+        checkedActive: false
     },  
     {
         todoId: 6,
         userId: 1,
         userDestinationRelationId: 2,
-        content: 'Island Hopping'
+        content: 'Island Hopping',
+        checkedActive: false
     },  
     {
         todoId: 7,
         userId: 1,
         userDestinationRelationId: 3,
-        content: 'Explore Casablanca'
+        content: 'Explore Casablanca',
+        checkedActive: false
     },  
     {
         todoId: 8,
         userId: 1,
         userDestinationRelationId: 3,
-        content: 'See the medina in Fez'
+        content: 'See the medina in Fez',
+        checkedActive: false
     },  
     {
         todoId: 9,
         userId: 1,
         userDestinationRelationId: 3,
-        content: 'See the Blue Village of Chefchaouen'
+        content: 'See the Blue Village of Chefchaouen',
+        checkedActive: false
     },  
 ]

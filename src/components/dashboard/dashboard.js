@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import DestinationList from '../destination-list/destination-list';
 import EmbeddedMap from '../embedded-map/embedded-map';
 import './dashboard.css';
+import { AppContext } from '../../app-context';
 
 class Dashboard extends Component{
-    constructor(props){
-        super(props)
-    }
 
     handleClick = (e) => {
         e.preventDefault()
         this.props.history.push('/add-destination')
-
     }
+
+    static contextType = AppContext;
+
     render(){
+        console.log(this.context)
+        console.log(this.context.currentUser.email)
         return(
             <section className="dashboard-container">
                 <header className="map-container">
+                <h2>Hello, <span className="red">{this.context.currentUser.email}</span></h2>
                     <EmbeddedMap/>
                 </header>
                 <div className="dashboard-bottom">

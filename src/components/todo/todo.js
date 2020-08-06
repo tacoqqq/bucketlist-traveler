@@ -7,7 +7,7 @@ class Todo extends Component {
         super(props)
         this.state = {
             content: this.props.content,
-            checkedActive: false
+            checkedActive: this.props.checkedActive
         }
     }
     
@@ -31,11 +31,18 @@ class Todo extends Component {
         this.context.deleteTodo(deletedTodo)
     }
 
-    handleCheck = (e) => {
+    handleCheck = () => {
         const currentCheckedState = this.state.checkedActive
         this.setState({
             checkedActive: !currentCheckedState
+        }, () => {
+            let updatedTodo = {
+                ...this.props,
+                checkedActive: this.state.checkedActive
+                }
+            this.context.updateTodo(updatedTodo)
         })
+
     }
 
     componentDidMount(){
