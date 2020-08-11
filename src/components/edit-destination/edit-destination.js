@@ -22,12 +22,20 @@ class EditDestination extends Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         let submitItem = this.state.todo
         this.context.addTodo(submitItem , this.props.match.params.destinationId)
         this.setState({
             todo: ''
         })
+    }
+
+    handleDelete = (e) => {
+        e.preventDefault()
+        const destination = this.context.destinations[this.props.match.params.destinationId - 1]
+        const deleteItemId = destination.destinationId
+        this.context.deleteDestination(deleteItemId)
+        this.props.history.push('/dashboard')
     }
 
     componentDidMount(){
@@ -53,6 +61,7 @@ class EditDestination extends Component {
                         <input className="add-tobo-bar" type="text" placeholder="Add todo here" value={this.state.todo} onChange={e => this.handleChange(e)}></input>
                         <button className="add-todo-btn" type="submit">Add</button>
                     </form>
+                    <button className="remove-message" onClick={e => this.handleDelete(e)}>Remove {destination.destination} from my bucket list</button>
                 </div>
             </header>
             <div className="todo-list" ref={(ref) => this.newData = ref}>

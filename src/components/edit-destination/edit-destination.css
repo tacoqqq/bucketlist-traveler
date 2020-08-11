@@ -69,3 +69,43 @@ input.add-tobo-bar  {
 .action-button{
   margin-top: 80px;
 }
+
+button.remove-message {
+  border: none;
+  border-radius: 0px;
+}
+
+button.remove-message:hover{
+  text-decoration: underline;
+}
+
+.remove-message {
+  font-family: 'Poppins', 'sans-serif';
+  color: white;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 5px 0px;
+  padding-left: 15px;
+  background-color: rosybrown;
+  width: 300px;
+  position: relative;
+}
+
+.remove-message:before, .remove-message:after {
+  position: absolute;
+  left: 15px;
+  top: 7px;
+  content: '';
+  height: 15px;
+  width: 1px;
+  background-color: white;
+}
+
+.remove-message:before{
+  transform: rotate(40deg);
+}
+
+.remove-message:after {
+  transform: rotate(-45deg);
+}

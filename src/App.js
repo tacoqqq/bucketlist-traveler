@@ -87,6 +87,13 @@ class App extends Component {
     })
   }
 
+  handleDeleteDestination = (destinationId) => {
+    const filteredDestinations = this.state.destinations.filter(destination => Number(destination.destinationId) !== Number(destinationId))
+    this.setState({
+      destinations: filteredDestinations
+    })    
+  }
+
   render(){
     return (
       <AppContext.Provider value = {
@@ -98,6 +105,7 @@ class App extends Component {
           currentLoggedIn: this.state.currentLoggedIn,
           addDestination: this.handleAddDestination,
           addTodo: this.handleAddTodo,
+          deleteDestination: this.handleDeleteDestination,
           updateTodo: this.handleUpdateTodo,
           deleteTodo: this.handleDeleteTodo,
           updateCurrentUser: this.handleUpdateCurrentUser,

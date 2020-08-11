@@ -10,6 +10,7 @@ export const AppContext = React.createContext({
     addTodo: () => {},
     updateTodo: () => {},
     deleteTodo: () => {},
+    deleteDestination: () => {},
     updateCurrentUser: () => {},
     addUser: () => {},
     checkTodo: () => {}
