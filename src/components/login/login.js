@@ -38,7 +38,7 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         }
-
+        
         fetch(`${config.API_ENDPOINT}/login`, {
             method: 'POST',
             headers: {
