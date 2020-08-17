@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Route , Redirect} from 'react-router-dom';
 import { AppContext } from '../app-context';
+import TokenService from '../services/token-service';
 
 class PrivateRoute extends Component {
 
     static contextType = AppContext;
 
    render(){
-       let isLoggedIn = this.context.currentLoggedIn
+       let hasToken = TokenService.hasAuthToken()
        return (
-            isLoggedIn ? <Route {...this.props} /> : <Redirect to="/login" />
+            hasToken ? <Route {...this.props} /> : <Redirect to="/login" />
        )
    }
 }

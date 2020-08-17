@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch , Route } from 'react-router-dom';
+import { Switch , Route, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
 import LandingPage from './components/landingpage/landingpage';
@@ -8,7 +8,6 @@ import Login from './components/login/login';
 import Dashboard from './components/dashboard/dashboard';
 import EditDestination from './components/edit-destination/edit-destination';
 import { AppContext } from './app-context';
-import { destinationData, todoData, userData } from './dummydata';
 import PrivateRoute from '../src/components/private-route';
 import AddDestination from './components/add-destination/add-destination';
 import './App.css';
@@ -17,37 +16,30 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      destinations: destinationData,
-      todos: todoData,
-      users: userData,
-      currentUser: '',
-      currentLoggedIn: false
+      destinations: [],
+      todos: [],
+      //user: {},
     }
   }
 
   static contextType = AppContext;
 
-
   handleAddDestination = (location) => {
-    this.state.destinations.push(location)
     this.setState({
-      destinations: this.state.destinations
+      destinations: location
     })
   }
 
 
-  handleAddTodo = (todo,id) => {
-    this.state.todos.push({
-      todoId: this.state.todos.length + 1,
-      userId: 1,
-      userDestinationRelationId: Number(id),
-      content: todo      
-    })
+  handleAddTodo = (todo) => {
+    console.log('from app, todo')
+    this.state.todos.push(todo)
     this.setState({
       todos: this.state.todos
     })    
   }
 
+  /*
   handleUpdateTodo = (todoObj) => {
     const updatedTodos = this.state.todos.map(todo => {
       if (Number(todo.todoId) === Number(todoObj.todoId)) {
@@ -67,32 +59,13 @@ class App extends Component {
     })
   }
 
-  handleUpdateCurrentUser = (userId) => {
-    let user = userData.find(user => Number(user.userId) === Number(userId))
-    console.log(user)
-    let userMatchingDestinations = destinationData.filter(destination => Number(destination.userId) === Number(userId))
-    let userMatchingTodos = todoData.filter(todo => Number(todo.userId) === Number(userId))
-      this.setState({
-        destinations: userMatchingDestinations,
-        todos: userMatchingTodos,
-        currentUser: user,
-        currentLoggedIn: true
-      })
-  }
-
-  handleAddUser = (newUser) => {
-    this.state.users.push(newUser)
-    this.setState({
-      users: this.state.users
-    })
-  }
-
   handleDeleteDestination = (destinationId) => {
     const filteredDestinations = this.state.destinations.filter(destination => Number(destination.destinationId) !== Number(destinationId))
     this.setState({
       destinations: filteredDestinations
     })    
   }
+  */
 
   render(){
     return (
@@ -100,16 +73,14 @@ class App extends Component {
         {
           destinations: this.state.destinations,
           todos: this.state.todos,
-          users: this.state.users,
-          currentUser: this.state.currentUser,
-          currentLoggedIn: this.state.currentLoggedIn,
+          user: this.state.users,
           addDestination: this.handleAddDestination,
           addTodo: this.handleAddTodo,
+          /*
           deleteDestination: this.handleDeleteDestination,
           updateTodo: this.handleUpdateTodo,
           deleteTodo: this.handleDeleteTodo,
-          updateCurrentUser: this.handleUpdateCurrentUser,
-          addUser: this.handleAddUser
+          */
         }
       }>
         <div className="App">
@@ -119,14 +90,15 @@ class App extends Component {
               <Route exact path="/" component={LandingPage}/>
               <Route path="/signup" component={Signup}/>
               <Route path="/login" component={Login}/>
-              <PrivateRoute isLoggedIn={this.state.currentLoggedIn} path='/dashboard' component={Dashboard}/>
-              <PrivateRoute isLoggedIn={this.state.currentLoggedIn} path='/add-destination' component={AddDestination}/>
-              <PrivateRoute isLoggedIn={this.state.currentLoggedIn} path='/destination/:destinationId' component={EditDestination}/>
+              <PrivateRoute path='/dashboard' component={Dashboard}/>
+              <PrivateRoute path='/add-destination' component={AddDestination}/>
+              <PrivateRoute path='/destination/:destinationId' component={EditDestination}/>
+              <Redirect to="/login" />
             </Switch>
           </main>
           <Footer />
         </div>  
-      </AppContext.Provider>   
+      </AppContext.Provider>
     )
   }
 }

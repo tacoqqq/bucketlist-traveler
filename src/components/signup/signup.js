@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './signup.css'
 import actions from '../../actions/actions';
 import { AppContext } from '../../app-context';
+import config from '../../config';
 
 class Signup extends Component {
     constructor(props){
@@ -34,21 +35,46 @@ class Signup extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        /*
         if (this.context.users.find(user => user.email === this.state.email)){
             this.setState({
                 errorMessage: 'This email address has already been registered!'
             })
             return
         }
+        */
 
         let newUserInfo = {
-            userId: this.context.users.length + 1,
             email: this.state.email,
             password: this.state.password
         }
+
+        fetch(`${config.API_ENDPOINT}/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newUserInfo)
+            })
+            .then(res => {
+                if (!res.ok){
+                    throw new Error(res.statusText)
+                }
+                return res.json()
+            })
+            .then(resJson => {
+                this.props.history.push('/login')
+            })
+            .catch(err => {
+                this.setState({
+                    errorMessage: err.message
+                })
+            })
+        
+        /*
         this.context.addUser(newUserInfo)
         this.context.updateCurrentUser(newUserInfo.userId)
-        this.props.history.push('/dashboard')
+        */
     }
 
     //Users can press the esc key to leave this page and go back to homepage

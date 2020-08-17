@@ -1,13 +1,15 @@
 import React , { Component } from 'react';
 import { AppContext } from '../../app-context';
 import './todo.css';
+import config from '../../config';
+import TokenService from '../../services/token-service';
 
 class Todo extends Component {
     constructor(props){
         super(props)
         this.state = {
             content: this.props.content,
-            checkedActive: this.props.checkedActive
+            checkedActive: this.props.checked_active
         }
     }
     
@@ -15,34 +17,104 @@ class Todo extends Component {
 
     handleChange = (e) => {
         const newTodo = e.target.value
+    
         this.setState({
             content: newTodo
         }, () => {
             let updatedTodo = {
-                ...this.props,
-                content: this.state.content
+                id: this.props.id,
+                destination_id: this.props.destination_id,
+                user_id: this.props.user_id,
+                content: this.state.content,
+                checked_active: this.state.checkedActive
                 }
-            this.context.updateTodo(updatedTodo)
+
+                fetch(`${config.API_ENDPOINT}/todos/${this.props.destination_id}/${this.props.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                    body: JSON.stringify(updatedTodo)
+                })
+                    .then(res => {
+                        if (!res.ok){
+                            throw new Error(res.error)
+                        }
+                        return res.json()
+                    })
+                    .then(resJson => {
+                        this.setState({
+                            todoList: resJson
+                        })
+                        this.props.updateTodo(updatedTodo)
+                    })
+                    .catch(err => {
+                        console.log(err)
+            })
         })
     }
 
     handleDelete = (e) => {
         let deletedTodo = this.props
-        this.context.deleteTodo(deletedTodo)
+
+        fetch(`${config.API_ENDPOINT}/todos/${this.props.destination_id}/${this.props.id}`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+        })
+            .then(res => {
+                if (!res.ok){
+                    throw new Error(res.error)
+                }
+                this.props.deleteTodo(deletedTodo)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+
     }
 
     handleCheck = () => {
         const currentCheckedState = this.state.checkedActive
+    
         this.setState({
             checkedActive: !currentCheckedState
         }, () => {
             let updatedTodo = {
-                ...this.props,
-                checkedActive: this.state.checkedActive
+                id: this.props.id,
+                destination_id: this.props.destination_id,
+                user_id: this.props.user_id,
+                content: this.state.content,
+                checked_active: this.state.checkedActive
                 }
-            this.context.updateTodo(updatedTodo)
+                console.log(updatedTodo)
+                fetch(`${config.API_ENDPOINT}/todos/${this.props.destination_id}/${this.props.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                    body: JSON.stringify(updatedTodo)
+                })
+                    .then(res => {
+                        if (!res.ok){
+                            throw new Error(res.error)
+                        }
+                        return res.json()
+                    })
+                    .then(resJson => {
+                        this.setState({
+                            todoList: resJson
+                        })
+                        this.props.updateTodo(updatedTodo)
+                    })
+                    .catch(err => {
+                        console.log(err)
+            })
         })
-
     }
 
     componentDidMount(){

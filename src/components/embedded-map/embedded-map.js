@@ -33,13 +33,16 @@ class EmbeddedMap extends Component {
     };
 
     render(){
-        const markers = this.context.destinations.map((destination,i) => 
-            <Marker 
+        let coordinateObj
+        const markers = this.context.destinations.map((destination,i) => {
+            coordinateObj = JSON.parse(destination.coordinate)
+            return <Marker 
                 key={i} 
-                position={destination.coordinate}
+                position={coordinateObj}
                 onClick={this.onMarkerClick}
                 name={destination.destination}
                 />
+            }
             )
 
         const style = {     
@@ -54,7 +57,7 @@ class EmbeddedMap extends Component {
                     zoom={2}
                     style={style}
                     initialCenter={this.context.destinations.length ? 
-                    this.context.destinations[0].coordinate 
+                    coordinateObj 
                     : {lat: 40.52, lng: 34.34} }
                 >
                     {markers}

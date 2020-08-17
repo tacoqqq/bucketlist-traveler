@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../app-context';
+import TokenService from '../../services/token-service';
+import config from '../../config';
 import './login.css';
 
 class Login extends Component {
     constructor(props){
         super(props)
-        this.state={
+        this.state = {
             email: '',
             password: '',
             errorMessage: ''
@@ -31,22 +33,34 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        if (!this.context.users.find(user => user.email === this.state.email)){
-            this.setState({
-                errorMessage: 'Email or password is incorrect! Please try again.'
-            })
-            return
-        } 
 
-        let registeredUser = this.context.users.find(user => user.email === this.state.email)
-        if (registeredUser.password !== this.state.password){
-            this.setState({
-                errorMessage: 'Email or password is incorrect! Please try again.'
-            }) 
-            return          
+        const userInfo = {
+            email: this.state.email,
+            password: this.state.password
         }
-        this.context.updateCurrentUser(registeredUser.userId)
-        this.props.history.push('/dashboard')
+
+        fetch(`${config.API_ENDPOINT}/login`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => {
+                if (!res.ok){
+                    throw new Error(res.statusText)
+                }
+                return res.json()
+            })
+            .then(resJson => {
+                TokenService.saveAuthToken(resJson.authToken)
+                this.props.history.push('/dashboard')
+            })
+            .catch(err => {
+                this.setState({
+                    errorMessage: err.message
+                })
+            })
     }
 
     render(){
@@ -57,10 +71,10 @@ class Login extends Component {
                     <span className="login-message">New? <Link to="/signup" className="click-here-text">Click here</Link> to Sign Up.</span>
                     <div className="login-form-wrapper">
                         <div className="login-form-input">
-                            <input id="username" type="email" required placeholder="Email Address" value={this.state.email} onChange={e => this.handleEmailChange(e)}></input>
+                            <input id="username" type="email" required placeholder="Email Address" onChange={e => this.handleEmailChange(e)}></input>
                         </div>
                         <div className="login-form-input">
-                            <input id="search-video-title" type="password" minLength="8" required placeholder="Password" value={this.state.password} onChange={e => this.handlePasswordChange(e)}></input>
+                            <input id="search-video-title" type="password" required placeholder="Password" onChange={e => this.handlePasswordChange(e)}></input>
                         </div>
                     </div>
                     <div className="login-form-button">
