@@ -139,7 +139,7 @@ class Dashboard extends Component{
         return(
                 <section className="dashboard-container">
                     <header className="map-container">
-                    <h2>Hello, <span className="red">{this.state.user.email}</span></h2>
+                    <h2>Hello, <span className="red">{this.state.user.nickname ? this.state.user.nickname : this.state.user.email}</span>!</h2>
                         <EmbeddedMap/>
                     </header>
                     <div className="dashboard-bottom">

@@ -3,6 +3,15 @@
     position: relative;
 }
 
-.map-container div{
+.map-container > div{
     position: relative;
+    width: 95%;
+    margin: 0 auto;
+}
+
+
+@media only screen and (min-width: 768px){
+    .map-container > div{
+        width: 90%;
+    }    
 }

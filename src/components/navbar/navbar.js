@@ -13,7 +13,7 @@ class Navbar extends Component {
     render(){
         return( 
             <nav>
-                <div className="nav-title nav-item"><Link to="/">Home</Link></div>
+                <div className="nav-title nav-item"><Link to={TokenService.hasAuthToken() ? '/dashboard' : '/'}>Home</Link></div>
                 <Switch>
                     <Route exact path="/" render={props => { 
                     return  <div className="nav-menu">

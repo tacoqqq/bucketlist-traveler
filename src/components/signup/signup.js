@@ -9,6 +9,7 @@ class Signup extends Component {
     constructor(props){
         super(props)
         this.state={
+            nickname: '',
             email: '',
             password: '',
             errorMessage: ''
@@ -16,6 +17,13 @@ class Signup extends Component {
     }
 
     static contextType = AppContext;
+
+    handleNickNameChange = (e) => {
+        const userNickName = e.target.value
+        this.setState({
+            nickname: userNickName
+        })
+    }
 
     handleEmailChange = (e) => {
         const userEmail = e.target.value
@@ -35,16 +43,9 @@ class Signup extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        /*
-        if (this.context.users.find(user => user.email === this.state.email)){
-            this.setState({
-                errorMessage: 'This email address has already been registered!'
-            })
-            return
-        }
-        */
 
         let newUserInfo = {
+            name: this.state.nickname,
             email: this.state.email,
             password: this.state.password
         }
@@ -70,11 +71,6 @@ class Signup extends Component {
                     errorMessage: err.message
                 })
             })
-        
-        /*
-        this.context.addUser(newUserInfo)
-        this.context.updateCurrentUser(newUserInfo.userId)
-        */
     }
 
     //Users can press the esc key to leave this page and go back to homepage
@@ -93,6 +89,9 @@ class Signup extends Component {
                     <h4 className="signup-title">Sign Up</h4>
                     <span className="sign-up-message">Already have an account? <Link to="/login" className="click-here-text">Click here</Link> to Log In.</span>
                     <div className="signup-form-wrapper">
+                        <div className="sign-form-input">
+                            <input id="nickname" type="text" required placeholder="Your Nickname" onChange={e => this.handleNickNameChange(e)}></input>
+                        </div>
                         <div className="sign-form-input">
                             <input id="username" type="email" required placeholder="Email Address" onChange={e => this.handleEmailChange(e)}></input>
                         </div>

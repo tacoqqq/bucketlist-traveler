@@ -7,6 +7,7 @@ import Signup from './components/signup/signup';
 import Login from './components/login/login';
 import Dashboard from './components/dashboard/dashboard';
 import EditDestination from './components/edit-destination/edit-destination';
+import TokenService from './services/token-service';
 import { AppContext } from './app-context';
 import PrivateRoute from '../src/components/private-route';
 import AddDestination from './components/add-destination/add-destination';
@@ -93,7 +94,7 @@ class App extends Component {
               <PrivateRoute path='/dashboard' component={Dashboard}/>
               <PrivateRoute path='/add-destination' component={AddDestination}/>
               <PrivateRoute path='/destination/:destinationId' component={EditDestination}/>
-              <Redirect to="/login" />
+              <Redirect to={TokenService.hasAuthToken() ? '/dashboard' : '/'} />
             </Switch>
           </main>
           <Footer />
