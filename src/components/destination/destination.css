@@ -1,11 +1,17 @@
 .destination {
     border-radius: 8px;
-    margin: 40px 0;
+    margin: 40px 10px;
     background: white;
     border: 1px solid darkgrey;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
+.destination-card {
+  width: 100%;
+}
 
 .destination-title {
   font-size: 26px;
@@ -13,13 +19,12 @@
   opacity: 1;
 }
 
-
 .destination-thumbnail-img {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   width: 100%;
-  height: 250px;
-  object-fit : fill;
+  min-height: 230px;
+  object-fit: fill;
 }
 
 .destination:hover {
@@ -34,6 +39,8 @@
 .destination:hover > .edit-destination {
   opacity: 1;
   background-color: rosybrown;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .edit-destination > a {
@@ -48,9 +55,31 @@
 }
 */
 
-@media only screen and (min-width: 780px){
+@media only screen and (min-width: 768px){
+  .destination {
+    flex: 1 0 50%;
+    max-width: 45%;
+  }
+}
+
+@media only screen and (min-width: 1200px){
   .destination {
     flex: 1 0 30%;
     max-width: 30%;
   }
+}
+
+  
+@media only screen and (max-device-width: 768px) {
+  .edit-destination {
+    opacity: 1;
+    background-color: rosybrown;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .edit-destination > a {
+    color: white;
+    padding: 5px;
+  } 
 }

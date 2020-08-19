@@ -13,7 +13,7 @@ class Destination extends Component {
                 <div className="destination-card">
                     <img className="destination-thumbnail-img" src={this.props.image} alt="destination-thumbnail" />
                 </div>
-                <div><span className="destination-title">{this.props.destination}</span></div>
+                <div className="destination-title-wrapper"><span className="destination-title">{this.props.destination}</span></div>
                 <span className="edit-destination"><Link to={`/destination/${this.props.id}`}>Edit Todos</Link></span>
             </div>  
         )

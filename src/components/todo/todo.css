@@ -75,3 +75,15 @@
 .close:after, .check:before {
   transform: rotate(-45deg);
 }
+
+@media only screen and (max-width: 500px){
+  .check:before {
+    position: absolute;
+    right: 12px;
+    bottom: -6px;
+    content: '';
+    height: 13px;
+    width: 2px;
+    background-color: green;
+  }
+}

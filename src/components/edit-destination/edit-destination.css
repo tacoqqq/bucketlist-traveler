@@ -109,3 +109,86 @@ button.remove-message:hover{
 .remove-message:after {
   transform: rotate(-45deg);
 }
+
+@media only screen and (max-width: 280px){
+  .add-todo-bar-wrapper{
+    position: absolute;
+    width: 100%;
+    top: 5em;
+    padding: 10px;
+  }
+
+  button.remove-message {
+    border: none;
+    border-radius: 0px;
+    max-width: 200px;
+  }
+
+  header {
+    padding-bottom: 10px;
+  }
+
+  input.add-tobo-bar  {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    font-size: 16px;
+    padding: 8px;
+    padding-left: 20px;
+    border-radius: 25px;
+    border: 1px solid darkgrey;
+    font-family: 'Poppins', 'sans-serif';
+  }
+
+  .add-todo-btn {
+    margin: 0 auto;
+    width: 80%;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 8px;
+    padding-left: 20px;
+    border-radius: 25px;
+  }
+
+}
+
+
+@media only screen and (max-width: 320px){
+  .destination-cover-photo-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+}
+
+
+@media only screen and (min-width: 375px){
+  .destination-cover-photo-container {
+    overflow: hidden;
+    position: relative;
+    height: 60vh;
+  }
+}
+
+@media only screen and (min-width: 450px){
+  .destination-cover-photo-container {
+    overflow: hidden;
+    position: relative;
+    height: 80vh;
+  }
+}
+
+
+@media only screen and (min-width: 768px){
+  .destination-cover-photo-container {
+    overflow: hidden;
+    position: relative;
+    max-height: 70vh;
+    padding: 20px;
+  }
+}
+
+
+
+
+

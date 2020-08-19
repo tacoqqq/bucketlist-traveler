@@ -33,3 +33,20 @@ nav {
 .nav-item:visited, .nav-title a:visited {
     color: inherit;
 }
+
+
+@media only screen and (max-width: 280px){
+    nav {
+        padding: 20px 0;
+        justify-content: center;
+    }
+
+    .nav-item {
+        margin: 0 10px;
+    }
+
+    .nav-title {
+        display: none;
+    }
+}
+  

@@ -140,7 +140,7 @@ class Dashboard extends Component{
                 <section className="dashboard-container">
                     <header className="map-container">
                     <h2>Hello, <span className="red">{this.state.user.nickname ? this.state.user.nickname : this.state.user.email}</span>!</h2>
-                        <EmbeddedMap/>
+                        <EmbeddedMap SameSite='None' />
                     </header>
                     <div className="dashboard-bottom">
                         <h2>My Bucket List</h2>

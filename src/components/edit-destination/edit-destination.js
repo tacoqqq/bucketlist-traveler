@@ -71,6 +71,7 @@ class EditDestination extends Component {
                     todoContent:'',
                     todoList: this.state.todoList
                 })
+                this.newData.scrollIntoView({ behavior: "smooth" })
             })
             .catch(err => {
                 console.log(err)
@@ -161,11 +162,6 @@ class EditDestination extends Component {
             .catch(err => {
                 console.log(err)
             })
-
-    }
-
-    componentDidUpdate() {
-        this.newData.scrollIntoView({ behavior: "smooth" })
     }
 
     render(){

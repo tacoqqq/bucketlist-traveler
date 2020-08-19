@@ -11,6 +11,7 @@ class AddDestination extends Component {
         super(props)
         this.state = {
             location: '',
+            errorMessage: ''
         }
     }
     
@@ -40,8 +41,7 @@ class AddDestination extends Component {
         })
         .then(res => {
             if (!res.ok){
-                console.log(res)
-                throw new Error(res.error)
+                throw new Error(res.statusText)
             }
             return res.json()
         })
@@ -49,7 +49,9 @@ class AddDestination extends Component {
             this.props.history.push('/dashboard')
         })
         .catch(err => {
-            console.log(err.response)
+            this.setState({
+                errorMessage: err.message
+            })
         })
     }
 
@@ -77,6 +79,12 @@ class AddDestination extends Component {
                     <div className="add-form-button">
                         <button type="submit">Continue</button>
                         <button type="reset">Reset</button>
+                        {this.state.errorMessage ?
+                            <div className="error-conatiner">
+                                <span className="error-message">{this.state.errorMessage} Please try again.</span>
+                            </div> 
+                            : ''
+                        }
                     </div>
                     <div className="action-button">
                         <Link to="/dashboard"><button>Back to Dashboard</button></Link>
