@@ -9,7 +9,7 @@ class Todo extends Component {
         super(props)
         this.state = {
             content: this.props.content,
-            checkedActive: this.props.checked_active
+            checkedActive: this.props.checked_active,
         }
     }
     

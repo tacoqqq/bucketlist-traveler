@@ -22,10 +22,11 @@ class LandingPage extends Component {
 
     componentDidMount(){
         this.timer = setInterval(() => {
+            let imageId = this.state.currentImageId % 3
+            imageId = imageId + 1
             this.setState({
-                currentImageId : this.state.currentImageId % 3 + 1
+                currentImageId : imageId
             })
-            this.state.currentImageId = this.state.currentImageId + 1 
         }, 5000)
     }
 

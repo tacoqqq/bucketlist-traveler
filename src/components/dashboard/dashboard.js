@@ -5,6 +5,8 @@ import './dashboard.css';
 import config from '../../config';
 import TokenService from '../../services/token-service';
 import { AppContext } from '../../app-context';
+import Loader from 'react-loader-spinner';
+
 
 class Dashboard extends Component{
     constructor(props){
@@ -12,19 +14,11 @@ class Dashboard extends Component{
         this.state = {
           todos: [],
           user: {},
+          isLoading: true
         }
       }
     
       static contextType = AppContext;
-
-      /*
-      handleAddDestination = (location) => {
-        this.state.destinations.push(location)
-        this.setState({
-          destinations: this.state.destinations
-        })
-      }
-      */
     
       handleAddTodo = (todo,id) => {
         this.state.todos.push({
@@ -56,29 +50,6 @@ class Dashboard extends Component{
           todos: filteredTodos
         })
       }
-
-    /*      
-      handleUpdateCurrentUser = (userId) => {
-        let user = userData.find(user => Number(user.userId) === Number(userId))
-        console.log(user)
-        let userMatchingDestinations = destinationData.filter(destination => Number(destination.userId) === Number(userId))
-        let userMatchingTodos = todoData.filter(todo => Number(todo.userId) === Number(userId))
-          this.setState({
-            destinations: userMatchingDestinations,
-            todos: userMatchingTodos,
-            currentUser: user,
-            currentLoggedIn: true
-          })
-      }
-    
-
-      handleAddUser = (newUser) => {
-        this.state.users.push(newUser)
-        this.setState({
-          users: this.state.users
-        })
-      }
-      */
     
       handleDeleteDestination = (destinationId) => {
         const filteredDestinations = this.state.destinations.filter(destination => Number(destination.destinationId) !== Number(destinationId))
@@ -93,9 +64,10 @@ class Dashboard extends Component{
         this.props.history.push('/add-destination')
     }
 
-    static contextType = AppContext;
-
     componentDidMount(){
+       this.setState({
+           isLoading: true
+       })
        fetch(`${config.API_ENDPOINT}/destinations`, {
            headers: {
                'authorization': `bearer ${TokenService.getAuthToken()}`
@@ -122,7 +94,8 @@ class Dashboard extends Component{
             })
             .then(resJson => {
                 this.setState({
-                    user: resJson
+                    user: resJson,
+                    isLoading: false
                 })
             })
             .catch(err => {
@@ -131,24 +104,41 @@ class Dashboard extends Component{
        })
        .catch(err => {
            console.log(err)
-       })
+        })
     }
 
+
+    componentWillUnmount(){
+        clearInterval(this.timer)
+    }
 
     render(){
         return(
                 <section className="dashboard-container">
-                    <header className="map-container">
-                    <h2>Hello, <span className="red">{this.state.user.nickname ? this.state.user.nickname : this.state.user.email}</span>!</h2>
-                        <EmbeddedMap SameSite='None' />
-                    </header>
-                    <div className="dashboard-bottom">
-                        <h2>My Bucket List</h2>
-                        <DestinationList />
-                        <div className="add-button-container">
-                            <button onClick={e => this.handleClick(e)}>Add destination</button>
+                    {this.state.isLoading ?       
+                        <Loader
+                            type="ThreeDots"
+                            color="#00BFFF"
+                            height={80}
+                            width={80}
+                            timeout={3000} //3 secs
+                    
+                        />
+                    : 
+                    <>
+                        <header className="map-container">
+                        <h2>Hello, <span className="red">{this.state.user.nickname ? this.state.user.nickname : this.state.user.email}</span>!</h2>
+                            <EmbeddedMap SameSite='None' />
+                        </header>
+                        <div className="dashboard-bottom">
+                            <h2>My Bucket List</h2>
+                            <DestinationList />
+                            <div className="add-button-container">
+                                <button onClick={e => this.handleClick(e)}>Add destination</button>
+                            </div>
                         </div>
-                    </div>
+                    </>
+                    }
                 </section>
         )
     }

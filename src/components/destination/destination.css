@@ -6,46 +6,67 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    position: relative;
   }
 
-.destination-card {
-  width: 100%;
-}
+.destination-title-wrapper{
+   padding-bottom: 10px;
+  }
 
 .destination-title {
   font-size: 26px;
   font-weight: 700;
   opacity: 1;
+
 }
 
 .destination-thumbnail-img {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  padding: 5px;
   width: 100%;
   min-height: 230px;
-  object-fit: fill;
+  max-height: 230px;
+  object-fit: contain;
+  padding: 15px 15px 0px 15px;
 }
 
 .destination:hover {
   cursor: pointer;
 }
 
+.destination:hover:before {
+  content: '';
+  position: absolute;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: white;
+  opacity: 0.7;
+}
+
 .edit-destination {
   opacity: 0;
   transition: opacity linear 200ms;
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  top: 40%;
 }
 
 .destination:hover > .edit-destination {
   opacity: 1;
   background-color: rosybrown;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .edit-destination > a {
   color: white;
   padding: 5px;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 /*

@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import Todo from '../todo/todo';
-import './edit-destination.css';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../app-context';
 import config from '../../config';
 import TokenService from '../../services/token-service';
+import Loader from 'react-loader-spinner';
+import './edit-destination.css';
+
 
 class EditDestination extends Component {
     constructor(props){
         super(props)
         this.state = {
             todoContent: '',
-            todoList: []
+            todoList: [],
+            isLoading: true,
         }
     }
 
@@ -100,10 +103,17 @@ class EditDestination extends Component {
         })
     }
 
+    handleLoad = () => {
+        console.log('insideHandleLoad')
+        this.setState({
+            isLoading: true
+        })
+
+    }
 
     componentDidMount(){
+        window.addEventListener('load', this.handleLoad)
         window.scrollTo(0,0)
-
         if (this.context.destinations.length === 0){
             fetch(`${config.API_ENDPOINT}/destinations`, {
                 headers: {
@@ -174,27 +184,28 @@ class EditDestination extends Component {
             ) 
             || ''
         return(
-        <section className="destination-todo-container">
-            <header>
-                <div className="destination-cover-photo-container">
-                    <img className="destination-cover-photo" src={destination.img} alt='destination img'/> 
+            <section className="destination-todo-container">
+                <header>
+                    <div className="destination-cover-photo-container">
+                        <img className="destination-cover-photo" src={destination.img} alt='destination img'/> 
+                    </div>
+                    <div className="add-todo-bar-wrapper">
+                        <h1 className="todo-title">Things to Do in {destination.destination}</h1>
+                        <form onSubmit={e => this.handleAddTodo(e)}>
+                            <input className="add-tobo-bar" type="text" placeholder="Add todo here" required value={this.state.todoContent} onChange={e => this.handleChange(e)}></input>
+                            <button className="add-todo-btn" type="submit">Add</button>
+                        </form>
+                        <button className="remove-message" onClick={e => this.handleDeleteDestination(e)}>Remove {destination.destination} from my bucket list</button>
+                    </div>
+                </header>
+                <div className="todo-list" ref={(ref) => this.newData = ref}>
+                    {todoList.length > 0 ? todoList: <div className="message">What do you want to do in <span>{destination.destination}</span>?</div>}
                 </div>
-                <div className="add-todo-bar-wrapper">
-                    <h1 className="todo-title">Things to Do in {destination.destination}</h1>
-                    <form onSubmit={e => this.handleAddTodo(e)}>
-                        <input className="add-tobo-bar" type="text" placeholder="Add todo here" required value={this.state.todoContent} onChange={e => this.handleChange(e)}></input>
-                        <button className="add-todo-btn" type="submit">Add</button>
-                    </form>
-                    <button className="remove-message" onClick={e => this.handleDeleteDestination(e)}>Remove {destination.destination} from my bucket list</button>
+                <div className="action-button">
+                    <Link to="/dashboard"><button>Back to Dashboard</button></Link>
                 </div>
-            </header>
-            <div className="todo-list" ref={(ref) => this.newData = ref}>
-                {todoList}
-            </div>
-            <div className="action-button">
-                <Link to="/dashboard"><button>Back to Dashboard</button></Link>
-            </div>
-        </section>
+            </section>
+
         )
     }
 }
