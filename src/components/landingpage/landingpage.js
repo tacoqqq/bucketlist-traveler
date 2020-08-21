@@ -35,7 +35,7 @@ class LandingPage extends Component {
     }
 
     render(){
-        const heroImgs = imgData.map( (img,i) => <HeroImg key={img.id} id={img.id} name={img.name} src={img.src}/>)
+        const heroImgs = imgData.map( (img,i) => <HeroImg key={img.id} id={img.id} name={img.name} src={img.src} />)
         const currentImg = heroImgs.filter(img => Number(img.props.id) === Number(this.state.currentImageId))
         const dots = imgData.map( (img,i) => <Dot key={img.id} id={img.id} changeBanner={this.currentSlide}/>)
         return(
