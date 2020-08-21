@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../../app-context';
 import config from '../../config';
 import TokenService from '../../services/token-service';
-import Loader from 'react-loader-spinner';
 import './edit-destination.css';
 
 
