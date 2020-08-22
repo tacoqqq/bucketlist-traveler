@@ -11,6 +11,8 @@ class AddDestination extends Component {
         super(props)
         this.state = {
             location: '',
+            isLoading: false,
+            loadingMessage: '',
             errorMessage: ''
         }
     }
@@ -21,12 +23,21 @@ class AddDestination extends Component {
         this.setState({
             location: e.target.value,
             coordinates: {},
-            imageUrl: ''
+            imageUrl: '',
+            isLoading: false,
+            loadingMessage: '',
+            errorMessage: ''
         })
     } 
 
     handleSubmit = (e) => {
         e.preventDefault()
+
+        this.setState({
+            isLoading: true,
+            loadingMessage: 'Adding destination...'
+        })
+
         let newDestination = {
             destination: this.state.location
         }
@@ -50,6 +61,8 @@ class AddDestination extends Component {
         })
         .catch(err => {
             this.setState({
+                isLoading: false,
+                loadingMessage: '',
                 errorMessage: err.message
             })
         })
@@ -80,10 +93,16 @@ class AddDestination extends Component {
                         <button type="submit">Continue</button>
                         <button type="reset">Reset</button>
                         {this.state.errorMessage ?
-                            <div className="error-conatiner">
+                            <div className="error-container">
                                 <span className="error-message">{this.state.errorMessage} Please try again.</span>
                             </div> 
                             : ''
+                        }
+                        {this.state.loadingMessage ?
+                        <div className="error-container">
+                            <span className="error-message" style={{color: 'red'}}>{this.state.loadingMessage}</span>
+                        </div> 
+                        : ''
                         }
                     </div>
                     <div className="action-button">

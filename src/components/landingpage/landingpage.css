@@ -14,6 +14,14 @@
 }
 */
 
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    max-height: 650px;
+}
+
 .lp-title{
     position: absolute;
     color: white;
@@ -23,23 +31,23 @@
     right: 10%;
     font-family: 'Poppins','sans-serif';
     padding: 20px;
-    z-index: 100;
+    z-index: 1;
 }
-
-/* Slideshow container */
-.slideshow-container {
-  position: relative;
-  margin: auto;
-  overflow: hidden;
-  height: 650px;
-}
-
 
 .img-container {
   position: relative;
-  height: 100%;
+  background-image: url('../../img/hero2.jpeg'), url('../../img/hero3.jpeg'), url('../../img/hero4.jpeg');
+  position: relative;
+  height: 650px;
 }
 
+.mySlides {
+  position: relative;
+  display: block;
+  background-image: url('../../img/hero2.jpeg');
+  background-color: grey;
+  height: 650px;
+}
 
 /* Caption text */
 .text {
@@ -93,6 +101,7 @@
   from {opacity: 1}
   to {opacity: 1}
 }
+
 
 h1 {
     font-size: 3em;
@@ -171,6 +180,7 @@ span.section-title {
         top: 30%;
         left: 20%;
         font-family: 'Poppins','sans-serif';
+        z-index: 100;
     }
 }
 

@@ -19,7 +19,6 @@ class App extends Component {
     this.state = {
       destinations: [],
       todos: [],
-      //user: {},
     }
   }
 
@@ -31,7 +30,6 @@ class App extends Component {
     })
   }
 
-
   handleAddTodo = (todo) => {
     console.log('from app, todo')
     this.state.todos.push(todo)
@@ -40,34 +38,6 @@ class App extends Component {
     })    
   }
 
-  /*
-  handleUpdateTodo = (todoObj) => {
-    const updatedTodos = this.state.todos.map(todo => {
-      if (Number(todo.todoId) === Number(todoObj.todoId)) {
-        return todoObj
-      } 
-      return todo
-    })
-    this.setState({
-      todos: updatedTodos
-    })
-  }
-
-  handleDeleteTodo = (todoObj) => {
-    const filteredTodos = this.state.todos.filter(todo => Number(todo.todoId) !== Number(todoObj.todoId))
-    this.setState({
-      todos: filteredTodos
-    })
-  }
-
-  handleDeleteDestination = (destinationId) => {
-    const filteredDestinations = this.state.destinations.filter(destination => Number(destination.destinationId) !== Number(destinationId))
-    this.setState({
-      destinations: filteredDestinations
-    })    
-  }
-  */
-
   render(){
     return (
       <AppContext.Provider value = {
@@ -75,13 +45,9 @@ class App extends Component {
           destinations: this.state.destinations,
           todos: this.state.todos,
           user: this.state.users,
+          heroImgs: this.context.heroImgs,
           addDestination: this.handleAddDestination,
           addTodo: this.handleAddTodo,
-          /*
-          deleteDestination: this.handleDeleteDestination,
-          updateTodo: this.handleUpdateTodo,
-          deleteTodo: this.handleDeleteTodo,
-          */
         }
       }>
         <div className="App">

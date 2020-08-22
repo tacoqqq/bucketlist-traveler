@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../app-context';
 import TokenService from '../../services/token-service';
+import actions from '../../actions/actions';
 import config from '../../config';
 import './login.css';
 
@@ -11,6 +12,8 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            isLoading: false,
+            loadingMessage: '',
             errorMessage: ''
         }
     }
@@ -20,20 +23,29 @@ class Login extends Component {
     handleEmailChange = (e) => {
         const userEmail = e.target.value
         this.setState({
-            email: userEmail
+            email: userEmail,
+            isLoading: false,
+            loadingMessage: '',
+            errorMessage: ''
         })
     }
 
     handlePasswordChange = (e) => {
         const userPassword = e.target.value
         this.setState({
-            password: userPassword
+            password: userPassword,
+            isLoading: false,
+            loadingMessage: '',
+            errorMessage: ''
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-
+        this.setState({
+            isLoading: true,
+            loadingMessage: 'Logging in...'
+        })
         const userInfo = {
             email: this.state.email,
             password: this.state.password
@@ -53,14 +65,32 @@ class Login extends Component {
                 return res.json()
             })
             .then(resJson => {
+                this.setState({
+                    isLoading: false,
+                    loadingMessage: ''
+                })
                 TokenService.saveAuthToken(resJson.authToken)
                 this.props.history.push('/dashboard')
             })
             .catch(err => {
                 this.setState({
+                    isLoading: false,
+                    loadingMessage: '',
+                    errorMessage: err.message,
+                    loadingMessage: '',
                     errorMessage: err.message
                 })
             })
+    }
+
+    //Users can press the esc key to leave this page and go back to homepage
+    componentDidMount(){
+        window.scrollTo(0,0)    
+        document.addEventListener("keydown", (e) => actions.escFunction(e, this.props.history), false);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("keydown", (e) => actions.escFunction(e, this.props.history), false);
     }
 
     render(){
@@ -81,8 +111,14 @@ class Login extends Component {
                         <button>Continue</button>
                         <button type="reset">Reset</button>
                         {this.state.errorMessage ?
-                        <div className="error-conatiner">
+                        <div className="error-container">
                             <span className="error-message">{this.state.errorMessage}</span>
+                        </div> 
+                        : ''
+                        }
+                        {this.state.loadingMessage ?
+                        <div className="error-container">
+                            <span className="error-message" style={{color: 'red'}}>{this.state.loadingMessage}</span>
                         </div> 
                         : ''
                         }

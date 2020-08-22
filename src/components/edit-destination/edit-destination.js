@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../../app-context';
 import config from '../../config';
 import TokenService from '../../services/token-service';
+import actions from '../../actions/actions';
 import './edit-destination.css';
 
 
@@ -111,6 +112,8 @@ class EditDestination extends Component {
     }
 
     componentDidMount(){
+        document.addEventListener("keydown", (e) => actions.escFunction(e, this.props.history), false);
+
         window.addEventListener('load', this.handleLoad)
         window.scrollTo(0,0)
         if (this.context.destinations.length === 0){
@@ -171,6 +174,10 @@ class EditDestination extends Component {
             .catch(err => {
                 console.log(err)
             })
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("keydown", (e) => actions.escFunction(e, this.props.history), false);
     }
 
     render(){

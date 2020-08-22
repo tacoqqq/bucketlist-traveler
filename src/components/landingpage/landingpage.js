@@ -9,7 +9,7 @@ class LandingPage extends Component {
     constructor(props){
         super(props)
         this.state={
-            currentImageId: 1
+            currentImageId: 0,
         }
     }
 
@@ -21,6 +21,22 @@ class LandingPage extends Component {
 
 
     componentDidMount(){
+        console.log('in component')
+        this.timer = setInterval(() => {
+            let i 
+            let slides = document.getElementsByClassName("mySlides")
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none"
+            }
+
+            let imageId = this.state.currentImageId % 3
+            imageId = imageId + 1
+            this.setState({
+                currentImageId : imageId
+            })
+            slides[this.state.currentImageId - 1].style.display = "block"
+        }, 5000)
+        /*
         this.timer = setInterval(() => {
             let imageId = this.state.currentImageId % 3
             imageId = imageId + 1
@@ -28,6 +44,7 @@ class LandingPage extends Component {
                 currentImageId : imageId
             })
         }, 5000)
+        */
     }
 
     componentWillUnmount() {
@@ -48,9 +65,7 @@ class LandingPage extends Component {
                         <Link to="/signup"><button className="hero-button">Start Your List</button></Link>
                     </div>
                     {/*Full-width images with number and caption text*/}  
-                    <div className="img-container">
-                        {currentImg}
-                    </div> 
+                    {heroImgs}
                     {/*The dots/circles*/}
                     <div className="dot-container">
                         {dots}
