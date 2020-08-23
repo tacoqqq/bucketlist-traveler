@@ -29,8 +29,8 @@ h1 {
 
 input.add-tobo-bar  {
   margin: 0 auto;
-  width: 60%;
-  max-width: 500px;
+  width: 80%;
+  max-width: 600px;
   display: inline-block;
   font-size: 16px;
   padding: 8px;
@@ -41,9 +41,9 @@ input.add-tobo-bar  {
 }
 
 .add-todo-btn {
-  padding: 8px;
+  padding: 7px;
   display: inline-block;
-  margin-left: -30px;
+  margin-left: -100px;
   width: 100px;
   font-size: 16px;
   border: 1px solid grey;
@@ -86,6 +86,7 @@ input.add-tobo-bar  {
 button.remove-message {
   border: none;
   border-radius: 0px;
+  margin-top: 10px;
 }
 
 button.remove-message:hover{

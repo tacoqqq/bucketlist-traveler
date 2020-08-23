@@ -11,6 +11,7 @@
 .sign-up-message {
   font-size: 14px;
   padding: 0px;
+  font-family: 'Poppins','sans-serif';
 }
 
 .click-here-text {
@@ -56,6 +57,7 @@
   border-radius: 5px;
   border: 1px solid darkgrey;
   height: 2.5rem;
+  font-family: 'Poppins','sans-serif';
 }
 
 .title {

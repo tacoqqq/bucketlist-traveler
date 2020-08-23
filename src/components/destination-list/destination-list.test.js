@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router} from 'react-router-dom';
-import { render } from '@testing-library/react';
-import App from './App';
+import DestinationList from './destination-list';
 
 it ('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<Router><App /></Router>, div)
+  window.scrollTo = jest.fn()
+  ReactDOM.render(<Router><DestinationList /></Router>, div)
   ReactDOM.unmountComponentAtNode(div);
 })

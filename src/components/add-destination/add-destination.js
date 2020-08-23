@@ -32,7 +32,6 @@ class AddDestination extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-
         this.setState({
             isLoading: true,
             loadingMessage: 'Adding destination...'
@@ -77,7 +76,6 @@ class AddDestination extends Component {
         document.removeEventListener("keydown", (e) => actions.escFunction(e, this.props.history), false);
     }
 
-
     render(){
         return(
             <section className="add-form-container">
@@ -92,12 +90,14 @@ class AddDestination extends Component {
                     <div className="add-form-button">
                         <button type="submit">Continue</button>
                         <button type="reset">Reset</button>
+                        {/* show error message*/}
                         {this.state.errorMessage ?
                             <div className="error-container">
                                 <span className="error-message">{this.state.errorMessage} Please try again.</span>
                             </div> 
                             : ''
                         }
+                        {/* show current status message*/}
                         {this.state.loadingMessage ?
                         <div className="error-container">
                             <span className="error-message" style={{color: 'red'}}>{this.state.loadingMessage}</span>

@@ -14,14 +14,21 @@ class LandingPage extends Component {
     }
 
     currentSlide = (id) => {
+        let i 
         this.setState({
             currentImageId: id
+        }, () => {
+            let slides = document.getElementsByClassName("mySlides")
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none"
+            }
+            slides[this.state.currentImageId - 1].style.display = "block"
         })
     }
 
 
     componentDidMount(){
-        console.log('in component')
+        //hero image slider, change automatically every 5 sec
         this.timer = setInterval(() => {
             let i 
             let slides = document.getElementsByClassName("mySlides")
@@ -36,15 +43,6 @@ class LandingPage extends Component {
             })
             slides[this.state.currentImageId - 1].style.display = "block"
         }, 5000)
-        /*
-        this.timer = setInterval(() => {
-            let imageId = this.state.currentImageId % 3
-            imageId = imageId + 1
-            this.setState({
-                currentImageId : imageId
-            })
-        }, 5000)
-        */
     }
 
     componentWillUnmount() {
@@ -98,13 +96,3 @@ class LandingPage extends Component {
 }
 
 export default LandingPage;
-
-/*
-                <header className="lp-header">
-                    <div className="lp-title">
-                        <h1>Bucket List Traveler</h1>
-                        <h2>Journey begins here</h2>
-                        <Link to="/signup"><button className="hero-button">Start Your List</button></Link>
-                    </div>
-                </header>
-*/

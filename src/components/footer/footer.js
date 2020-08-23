@@ -7,6 +7,9 @@ class Footer extends Component {
         return(
             <footer>
                 Developed by Daphne Fang
+                <div className="contact">
+                    <a href="https://github.com/tacoqqq?tab=repositories&q=bucketlist-traveler&type=&language=" target="_blank" rel="noopener noreferrer" alt="github">Repo</a>｜<a href="https://www.linkedin.com/in/daphneysfang" target="_blank" rel="noopener noreferrer" alt="linkedin">Linkedin</a>
+                </div>
             </footer>
         )
     }

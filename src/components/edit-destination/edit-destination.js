@@ -14,7 +14,6 @@ class EditDestination extends Component {
         this.state = {
             todoContent: '',
             todoList: [],
-            isLoading: true,
         }
     }
 
@@ -103,18 +102,8 @@ class EditDestination extends Component {
         })
     }
 
-    handleLoad = () => {
-        console.log('insideHandleLoad')
-        this.setState({
-            isLoading: true
-        })
-
-    }
-
     componentDidMount(){
         document.addEventListener("keydown", (e) => actions.escFunction(e, this.props.history), false);
-
-        window.addEventListener('load', this.handleLoad)
         window.scrollTo(0,0)
         if (this.context.destinations.length === 0){
             fetch(`${config.API_ENDPOINT}/destinations`, {

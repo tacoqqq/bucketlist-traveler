@@ -73,28 +73,6 @@ class EmbeddedMap extends Component {
     }
 }
 
-
-
 export default GoogleApiWrapper({
     apiKey: config.GooglePlacesAPIKey
 })(EmbeddedMap)
-
-
-/*
-            <div className="embedded-map">
-                <Map 
-                    google={this.props.google} 
-                    zoom={2}
-                    style={style}
-                >
-                    {markers}
-                    <InfoWindow
-                        marker={this.state.activeMarker}
-                        visible={this.state.showingInfoWindow}>
-                        <div>
-                            <h4>{this.state.selectedPlace.name}</h4>
-                        </div>
-                    </InfoWindow>
-                </Map>
-            </div>
-            */

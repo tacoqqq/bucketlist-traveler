@@ -1,8 +1,20 @@
 footer {
     background: rosybrown;
     padding: 10px;
-    font-family: 'Poppins', 'sans-serif';
     position: relative;
     bottom: 0px;
     width: 100%;
   }
+
+footer a {
+  text-decoration: underline;
+  color: black;
+}
+
+footer a:visited {
+  color: black;
+}
+
+.contact {
+  padding-top: 10px;
+}

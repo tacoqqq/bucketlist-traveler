@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch , Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
 import LandingPage from './components/landingpage/landingpage';
