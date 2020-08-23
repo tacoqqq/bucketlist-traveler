@@ -123,9 +123,12 @@ class Dashboard extends Component{
                         <button onClick={e => this.handleAddDestination(e)}>Add destination</button>
                     </div>
                     <DestinationList />
+                    {this.context.destinations.length > 0 ? 
                     <div className="add-button-container">
-                        <button onClick={e => this.handleAddDestination(e)}>Add destination</button>
-                    </div>
+                      <button onClick={e => this.handleAddDestination(e)}>Add destination</button>
+                    </div> 
+                    : 
+                    ''}
                 </div>
             </section>
         )
