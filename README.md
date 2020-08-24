@@ -7,7 +7,7 @@ Link to Live Demo: https://bucketlist-traveler-app.vercel.app/
 
 ## What is Bucket List Traveler?
 
-Travelling seems not likely during the pandemic. By developing this app, desperate tarvellers (like me!) can at least have a list of destinations to dream on, plan on and quench the thirst for flying around. 
+Traveling seems not likely during the pandemic. By developing this app, desperate tarvelers (like me!) can at least have a list of destinations to dream on, plan on and quench the thirst for flying around. 
 
 ![Home Demo](./markdown-images/home-demo.png)
 
