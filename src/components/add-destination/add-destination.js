@@ -19,6 +19,7 @@ class AddDestination extends Component {
     
     static contextType = AppContext
 
+    //handle tracing the destination input
     handleChange = (e) => {
         this.setState({
             location: e.target.value,
@@ -30,6 +31,7 @@ class AddDestination extends Component {
         })
     } 
 
+    //handle submit request to backend    
     handleSubmit = (e) => {
         e.preventDefault()
         this.setState({

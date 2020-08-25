@@ -31,7 +31,6 @@ class App extends Component {
   }
 
   handleAddTodo = (todo) => {
-    console.log('from app, todo')
     this.state.todos.push(todo)
     this.setState({
       todos: this.state.todos

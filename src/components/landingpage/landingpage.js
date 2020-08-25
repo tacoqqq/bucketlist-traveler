@@ -13,6 +13,7 @@ class LandingPage extends Component {
         }
     }
 
+    //choose current hero image in display
     currentSlide = (id) => {
         let i 
         this.setState({
@@ -51,7 +52,7 @@ class LandingPage extends Component {
 
     render(){
         const heroImgs = imgData.map( (img,i) => <HeroImg key={img.id} id={img.id} name={img.name} src={img.src} />)
-        const currentImg = heroImgs.filter(img => Number(img.props.id) === Number(this.state.currentImageId))
+        //the dots are displayed on the hero img. number of dots match the number of hero imgs in the slider
         const dots = imgData.map( (img,i) => <Dot key={img.id} id={img.id} changeBanner={this.currentSlide}/>)
         return(
             <div className="lp-container">
@@ -88,7 +89,10 @@ class LandingPage extends Component {
                 </div>
                 <div className="action-button">
                     <p>One day you will.</p>
-                    <Link to="/signup"><button>Get Started</button></Link>
+                    <div><Link to="/signup"><button>Get Started</button></Link></div>
+                    <Link style={{color: 'rosybrown', textDecoration: 'underline', marginTop: '20px', display:'block'}} to="/login">Or Try It With Demo Account First</Link>
+                    <p>Demo Email: hello@hello.com</p>
+                    <p>Demo Password: hellohello</p>
                 </div>
             </div>
         )

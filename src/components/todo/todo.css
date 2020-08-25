@@ -26,7 +26,7 @@
 }
 
 /* close (delete todo)*/
-.close, .check {
+.close {
   position: relative;
   right: 0.5em;
   bottom: 1em;
@@ -40,6 +40,18 @@
   opacity: 0.8;
 }
 
+.check {
+  position: relative;
+  right: 0.5em;
+  opacity: 0;
+  padding: 0px;
+  margin: 0 0 0 20px;
+  font-size: 20px;
+  border: none;
+  background-color: transparent !important;
+  outline: none;
+}
+
 .close:before, .close:after {
   position: absolute;
   right: 0px;
@@ -49,6 +61,7 @@
   background-color: #333;
 }
 
+/*
 .check:after  {
   position: absolute;
   right: 0px;
@@ -67,23 +80,12 @@
   width: 2px;
   background-color: green;
 }
+*/
 
-.close:before, .check:after {
+.close:before {
   transform: rotate(40deg);
 }
 
-.close:after, .check:before {
+.close:after {
   transform: rotate(-45deg);
-}
-
-@media only screen and (max-width: 500px){
-  .check:before {
-    position: absolute;
-    right: 12px;
-    bottom: -6px;
-    content: '';
-    height: 13px;
-    width: 2px;
-    background-color: green;
-  }
 }

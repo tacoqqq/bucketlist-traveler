@@ -16,6 +16,7 @@ class EmbeddedMap extends Component {
 
     static contextType = AppContext
 
+    //when click on ther marker pin, show the name of the destination
     onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -23,6 +24,7 @@ class EmbeddedMap extends Component {
       showingInfoWindow: true
     });
  
+    //if click on the map, close the opened marker (if there is one)
     onMapClicked = (props) => {
         if (this.state.showingInfoWindow) {
         this.setState({

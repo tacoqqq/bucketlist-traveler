@@ -90,7 +90,6 @@ class Todo extends Component {
                 content: this.state.content,
                 checked_active: this.state.checkedActive
                 }
-                console.log(updatedTodo)
                 fetch(`${config.API_ENDPOINT}/todos/${this.props.destination_id}/${this.props.id}`, {
                     method: 'PATCH',
                     headers: {
@@ -126,8 +125,8 @@ class Todo extends Component {
         return (
             <div className="todo-entry">
                 <input className="todo-item" style={this.state.checkedActive ? checkedStyle : null} type="text" value={this.state.content} onChange={e => this.handleChange(e)} />
-                <button className="close green" onClick={e => this.handleDelete(e)}></button>
-                <button className="check green" onClick={e => this.handleCheck(e)}></button>
+                <button className="close" onClick={e => this.handleDelete(e)}></button>
+                <button className="check" onClick={e => this.handleCheck(e)}><span>✅</span></button>
             </div>
         )
     }

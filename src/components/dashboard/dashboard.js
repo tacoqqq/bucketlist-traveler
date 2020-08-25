@@ -18,6 +18,7 @@ class Dashboard extends Component{
     
     static contextType = AppContext;
   
+    //Handle adding todo item in the target destination
     handleAddTodo = (todo,id) => {
       this.state.todos.push({
         todoId: this.state.todos.length + 1,
@@ -30,6 +31,7 @@ class Dashboard extends Component{
       })    
     }
   
+    //Handle updating todo item in the target destination
     handleUpdateTodo = (todoObj) => {
       const updatedTodos = this.state.todos.map(todo => {
         if (Number(todo.todoId) === Number(todoObj.todoId)) {
@@ -42,13 +44,15 @@ class Dashboard extends Component{
       })
     }
   
+    //Handle deleting todo item in the target destination
     handleDeleteTodo = (todoObj) => {
       const filteredTodos = this.state.todos.filter(todo => Number(todo.todoId) !== Number(todoObj.todoId))
       this.setState({
         todos: filteredTodos
       })
     }
-  
+
+    //Handle deleting the destination
     handleDeleteDestination = (destinationId) => {
       const filteredDestinations = this.state.destinations.filter(destination => Number(destination.destinationId) !== Number(destinationId))
       this.setState({
@@ -56,6 +60,7 @@ class Dashboard extends Component{
       })    
     }
 
+    //Handle adding a new destination
     handleAddDestination = (e) => {
         e.preventDefault()
         this.props.history.push('/add-destination')
@@ -65,6 +70,7 @@ class Dashboard extends Component{
       //go to top of the page
       window.scrollTo(0,0)    
 
+      //when isloading is ture, show the status message 
       this.setState({
           isLoading: true
       })

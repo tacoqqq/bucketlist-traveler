@@ -21,6 +21,7 @@ class Signup extends Component {
 
     static contextType = AppContext;
 
+    //Handle tracing the nickname input
     handleNickNameChange = (e) => {
         const userNickName = e.target.value
         this.setState({
@@ -28,6 +29,7 @@ class Signup extends Component {
         })
     }
 
+    //Handle tracing the email input
     handleEmailChange = (e) => {
         const userEmail = e.target.value
         this.setState({
@@ -38,6 +40,7 @@ class Signup extends Component {
         })
     }
 
+    //Handle tracing the password input
     handlePasswordChange = (e) => {
         const userPassword = e.target.value
         this.setState({
@@ -50,6 +53,7 @@ class Signup extends Component {
 
     static contextType = AppContext
 
+    //handle submit request to backend    
     handleSubmit = (e) => {
         e.preventDefault()
 
@@ -58,6 +62,7 @@ class Signup extends Component {
             loadingMessage: 'Enrolling new user...'
         })
 
+        //all newUserInfo that is ready to submit to the database
         let newUserInfo = {
             nickname: this.state.nickname,
             email: this.state.email,
@@ -78,7 +83,6 @@ class Signup extends Component {
                 return res.json()
             })
             .then(resJson => {
-
                 this.setState({
                     isLoading: true,
                     loadingMessage: 'Registered succesfully! Logging in...'
@@ -88,7 +92,7 @@ class Signup extends Component {
                     email: this.state.email,
                     password: this.state.password
                 }
-
+                //after a new user signed up successfully, log him/her in automaticaaly
                 fetch(`${config.API_ENDPOINT}/login`, {
                     method: 'POST',
                     headers: {

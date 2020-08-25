@@ -20,6 +20,7 @@ class Login extends Component {
 
     static contextType = AppContext;
 
+    //Handle tracing the email input
     handleEmailChange = (e) => {
         const userEmail = e.target.value
         this.setState({
@@ -30,6 +31,7 @@ class Login extends Component {
         })
     }
 
+    //Handle tracing the password input
     handlePasswordChange = (e) => {
         const userPassword = e.target.value
         this.setState({
@@ -40,6 +42,7 @@ class Login extends Component {
         })
     }
 
+    //handle submit request to backend
     handleSubmit = (e) => {
         e.preventDefault()
         this.setState({
