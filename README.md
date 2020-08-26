@@ -18,11 +18,11 @@ Traveling seems not likely during the pandemic. By developing this app, desperat
 ![Add a destination](./markdown-images/demo-1.jpg)
 ![Pin dropped onto the map, the destination generated on dashboard](./markdown-images/demo-2.png)
 
-- *Add todos:* Users can add/edit/delete/check-off to-do items to the destinations respectively.
+- *Add to-dos:* Users can add/edit/delete/check-off to-do items to the destinations respectively.
 
 ![Add Todo](./markdown-images/demo-3.png)
 
-- *Authenticaion System:* Users can sign up for the service and create their own personal list. Log in the app to retrieve personal list. Log out feature is also available.
+- *Authentication System:* Users can sign up for the service and create their own personal list. Log in the app to retrieve personal list. Log out feature is also available.
 
 ## Technology Used
 - React
